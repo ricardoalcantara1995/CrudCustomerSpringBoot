@@ -59,4 +59,4 @@ VALUES
 ('Maria', 'lee', 'maria.lee@example.com', '987654322'),
 ('Carlos', 'Lopez', 'carlos.lopez@example.com', '987654323'),
 ('Ana', 'Torres', 'ana.torres@example.com', '987654324'),
-('Juan', 'Perez', 'juan.perez@example.com', '987654321'),
+('Juan', 'Perez', 'juan.perez@example.com', '987654321');
