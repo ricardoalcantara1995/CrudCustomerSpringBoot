@@ -19,4 +19,7 @@ public class CustomerService {
     public Customer getOne(Long id){
         return customerRepository.findById(id).get();
     }
+    public Customer saveCustomer(CustomerDTO dto){
+        Customer customer = new Customer(dto.)
+    }
 }

@@ -15,12 +15,12 @@ public class Customer {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, name = "name")
+    @Column(name = "name")
     private String name;
-    @Column(unique = true, name = "lastname")
+    @Column(name = "lastname")
     private String lastName;
     @Column(unique = true, name = "email")
     private String email;
-    @Column(unique = true, name = "phone")
+    @Column(name = "phone")
     private String phone;
 }
