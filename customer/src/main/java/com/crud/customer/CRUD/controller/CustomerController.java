@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.net.http.HttpResponse;
 import java.util.List;
@@ -34,11 +35,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.saveCustomer(dto));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@RequestBody CustomerDTO dto){
+    public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@RequestBody CustomerDTO dto) throws ResourceNotFoundException {
         return ResponseEntity.ok(customerService.updateCustomer(id,dto));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Customer>deleteOne(@PathVariable("id")Long id){
+    public ResponseEntity<Customer>deleteOne(@PathVariable("id")Long id)throws ResourceNotFoundException{
         return  ResponseEntity.ok(customerService.deleteOne(id));
     }
 }

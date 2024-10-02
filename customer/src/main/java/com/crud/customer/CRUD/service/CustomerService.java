@@ -26,18 +26,20 @@ public class CustomerService {
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
     }
-    public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceAccessException{
+    public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException {
         Customer customerUpdate = customerRepository.findById(id)
-                .orElseThrow(() -> new ResourceAccessException("Customer not found or not exist"));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
+
         customerUpdate.setName(dto.getName());
         customerUpdate.setLastName(dto.getLastName());
         customerUpdate.setEmail(dto.getEmail());
         customerUpdate.setPhone(dto.getPhone());
         return customerRepository.save(customerUpdate);
     }
-    public Customer deleteOne(Long id){
-        Customer customerDelete =  customerRepository.findById(id).get();
-        customerRepository.delete(customerDelete);
+    public Customer deleteOne(Long id) throws ResourceNotFoundException {
+        Customer customerDelete =  customerRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
+                customerRepository.delete(customerDelete);
         return customerDelete;
     }
 
