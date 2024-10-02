@@ -16,7 +16,7 @@ public class CustomerService {
     public List<Customer>allCustomers(){
         return customerRepository.findAll();
     }
-    public Customer getOne(Long id){
+    public Customer OneCustomer(Long id){
         return customerRepository.findById(id).get();
     }
     public Customer saveCustomer(CustomerDTO dto){
