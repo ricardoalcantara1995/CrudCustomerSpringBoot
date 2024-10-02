@@ -20,6 +20,7 @@ public class CustomerService {
         return customerRepository.findById(id).get();
     }
     public Customer saveCustomer(CustomerDTO dto){
-        Customer customer = new Customer(dto.)
+        Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
+        return customerRepository.save(customer);
     }
 }
