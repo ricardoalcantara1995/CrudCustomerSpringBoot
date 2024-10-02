@@ -16,11 +16,25 @@ public class CustomerService {
     public List<Customer>allCustomers(){
         return customerRepository.findAll();
     }
-    public Customer OneCustomer(Long id){
+    public Customer oneCustomer(Long id){
         return customerRepository.findById(id).get();
     }
     public Customer saveCustomer(CustomerDTO dto){
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
     }
+    public Customer updateCustomer(Long id, CustomerDTO dto){
+        Customer customerUpdate = customerRepository.findById(id).get();
+        customerUpdate.setName(dto.getName());
+        customerUpdate.setLastName(dto.getLastName());
+        customerUpdate.setEmail(dto.getEmail());
+        customerUpdate.setPhone(dto.getPhone());
+        return customerRepository.save(customerUpdate);
+    }
+    public Customer deleteOne(Long id){
+        Customer customerDelete =  customerRepository.findById(id).get();
+        customerRepository.delete(customerDelete);
+        return customerDelete;
+    }
+
 }
