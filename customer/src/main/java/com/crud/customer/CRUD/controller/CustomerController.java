@@ -36,5 +36,8 @@ public class CustomerController {
     public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@RequestBody CustomerDTO dto){
         return ResponseEntity.ok(customerService.updateCustomer(id,dto));
     }
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Customer>deleteOne(@PathVariable("id")Long id){
+        return  ResponseEntity.ok(customerService.deleteOne(id));
+    }
 }
