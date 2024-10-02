@@ -32,6 +32,9 @@ public class CustomerController {
     public ResponseEntity<Customer> saveCustomer(@RequestBody CustomerDTO dto){
         return ResponseEntity.ok(customerService.saveCustomer(dto));
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@RequestBody CustomerDTO dto){
+        return ResponseEntity.ok(customerService.updateCustomer(id,dto));
+    }
 
 }
