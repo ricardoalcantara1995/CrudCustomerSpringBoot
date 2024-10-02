@@ -6,6 +6,7 @@ import com.crud.customer.CRUD.repository.CustomerRepository;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
@@ -25,8 +26,9 @@ public class CustomerService {
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
     }
-    public Customer updateCustomer(Long id, CustomerDTO dto){
-        Customer customerUpdate = customerRepository.findById(id).get();
+    public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceAccessException{
+        Customer customerUpdate = customerRepository.findById(id)
+                .orElseThrow(() -> new ResourceAccessException("Customer not found or not exist"));
         customerUpdate.setName(dto.getName());
         customerUpdate.setLastName(dto.getLastName());
         customerUpdate.setEmail(dto.getEmail());
