@@ -3,6 +3,7 @@ package com.crud.customer.CRUD.controller;
 import com.crud.customer.CRUD.dto.CustomerDTO;
 import com.crud.customer.CRUD.model.Customer;
 import com.crud.customer.CRUD.service.CustomerService;
+import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> oneCustomer(@PathVariable("id") Long id){
+    public ResponseEntity<Customer> oneCustomer(@PathVariable("id") Long id) throws ResourceNotFoundException {
         return ResponseEntity.ok(customerService.oneCustomer(id));
     }
     @PostMapping("/save")
