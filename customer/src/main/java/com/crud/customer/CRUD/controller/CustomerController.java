@@ -2,24 +2,19 @@ package com.crud.customer.CRUD.controller;
 
 import com.crud.customer.CRUD.dto.CustomerDTO;
 import com.crud.customer.CRUD.model.Customer;
-import com.crud.customer.CRUD.service.CustomerService;
+import com.crud.customer.CRUD.service.impl.CustomerServiceImpl;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResourceAccessException;
 
-import java.net.http.HttpResponse;
 import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
     @Autowired
-    private CustomerService customerService;
+    private CustomerServiceImpl customerService;
 
     @GetMapping("/all")
     public ResponseEntity<List<Customer>>allCustomers(){
