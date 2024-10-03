@@ -24,11 +24,12 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
     }
     public Customer saveCustomer(CustomerDTO dto) throws AttributeException {
-        if(customerRepository.existsByEmail(dto.getEmail()))
+        if(customerRepository.existsByEmail(dto.getEmail())){
             throw new AttributeException("Email already in use");
+        } else {
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
-    }
+    }}
     public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException {
         Customer customerUpdate = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));

@@ -3,6 +3,7 @@ package com.crud.customer.CRUD.controller;
 import com.crud.customer.CRUD.dto.CustomerDTO;
 import com.crud.customer.CRUD.model.Customer;
 import com.crud.customer.CRUD.service.impl.CustomerServiceImpl;
+import com.crud.customer.GLOBAL.exceptions.AttributeException;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.oneCustomer(id));
     }
     @PostMapping("/save")
-    public ResponseEntity<Customer> saveCustomer(@RequestBody CustomerDTO dto){
+    public ResponseEntity<Customer> saveCustomer(@RequestBody CustomerDTO dto) throws AttributeException {
         return ResponseEntity.ok(customerService.saveCustomer(dto));
     }
     @PutMapping("/{id}")
