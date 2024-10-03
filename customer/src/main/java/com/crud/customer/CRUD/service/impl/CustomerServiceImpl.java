@@ -4,6 +4,7 @@ import com.crud.customer.CRUD.dto.CustomerDTO;
 import com.crud.customer.CRUD.model.Customer;
 import com.crud.customer.CRUD.repository.CustomerRepository;
 import com.crud.customer.CRUD.service.CustomerService;
+import com.crud.customer.GLOBAL.exceptions.AttributeException;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,9 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
     }
-    public Customer saveCustomer(CustomerDTO dto){
+    public Customer saveCustomer(CustomerDTO dto) throws AttributeException {
+        if(customerRepository.existsByEmail(dto.getEmail()))
+            throw new AttributeException("Email already in use");
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
     }
