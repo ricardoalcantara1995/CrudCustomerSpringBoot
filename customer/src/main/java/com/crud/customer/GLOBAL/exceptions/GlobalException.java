@@ -13,4 +13,9 @@ public class GlobalException {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new MessageDTO(HttpStatus.NOT_FOUND,exception.getMessage()));
     }
+    @ExceptionHandler(AttributeException.class)
+    ResponseEntity<MessageDTO>throwAttributeException(AttributeException exception){
+        return ResponseEntity.badRequest()
+                .body(new MessageDTO(HttpStatus.BAD_REQUEST,exception.getMessage()));
+    }
 }
