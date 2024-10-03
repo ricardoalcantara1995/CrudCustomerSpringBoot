@@ -5,6 +5,7 @@ import com.crud.customer.CRUD.model.Customer;
 import com.crud.customer.CRUD.service.impl.CustomerServiceImpl;
 import com.crud.customer.GLOBAL.exceptions.AttributeException;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,11 +28,11 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.oneCustomer(id));
     }
     @PostMapping("/save")
-    public ResponseEntity<Customer> saveCustomer(@RequestBody CustomerDTO dto) throws AttributeException {
+    public ResponseEntity<Customer> saveCustomer(@Valid @RequestBody CustomerDTO dto) throws AttributeException {
         return ResponseEntity.ok(customerService.saveCustomer(dto));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@RequestBody CustomerDTO dto) throws ResourceNotFoundException,AttributeException {
+    public ResponseEntity<Customer>updateCustomer(@Valid @PathVariable("id") Long id,@RequestBody CustomerDTO dto) throws ResourceNotFoundException,AttributeException {
         return ResponseEntity.ok(customerService.updateCustomer(id,dto));
     }
     @DeleteMapping("/{id}")
