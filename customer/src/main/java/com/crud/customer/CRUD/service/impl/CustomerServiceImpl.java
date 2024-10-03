@@ -7,7 +7,6 @@ import com.crud.customer.CRUD.service.CustomerService;
 import com.crud.customer.GLOBAL.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 
