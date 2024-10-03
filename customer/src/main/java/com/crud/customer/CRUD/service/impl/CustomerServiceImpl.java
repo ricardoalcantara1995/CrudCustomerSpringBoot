@@ -30,16 +30,18 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = new Customer(dto.getName(), dto.getLastName(), dto.getEmail(),dto.getPhone());
         return customerRepository.save(customer);
     }}
-    public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException {
+    public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException, AttributeException {
         Customer customerUpdate = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
-
+        if(customerRepository.existsByEmail(dto.getEmail()) && customerRepository.existsByEmail(dto.getEmail())){
+            throw new AttributeException("Email already in use");
+        } else {
         customerUpdate.setName(dto.getName());
         customerUpdate.setLastName(dto.getLastName());
         customerUpdate.setEmail(dto.getEmail());
         customerUpdate.setPhone(dto.getPhone());
         return customerRepository.save(customerUpdate);
-    }
+        }}
     public Customer deleteOne(Long id) throws ResourceNotFoundException {
         Customer customerDelete =  customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));

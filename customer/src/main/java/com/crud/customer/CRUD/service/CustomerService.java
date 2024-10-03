@@ -11,6 +11,6 @@ public interface CustomerService {
     List<Customer> allCustomers();
     Customer oneCustomer(Long id) throws ResourceNotFoundException;
     Customer saveCustomer(CustomerDTO dto) throws AttributeException;
-    Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException;
+    Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException, AttributeException;
     Customer deleteOne(Long id) throws ResourceNotFoundException;
 }
