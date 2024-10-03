@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -33,9 +34,12 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer updateCustomer(Long id, CustomerDTO dto) throws ResourceNotFoundException, AttributeException {
         Customer customerUpdate = customerRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Customer not found or not exist"));
-        if(customerRepository.existsByEmail(dto.getEmail()) && customerRepository.findByEmail(dto.getEmail()).get().getId() != id){
+
+        Optional<Customer> customerEmail = customerRepository.findByEmail(dto.getEmail());
+        if(customerEmail.isPresent() && !customerEmail.get().getId().equals(id)) {
             throw new AttributeException("Email already in use");
-        } else {
+        }
+         else {
         customerUpdate.setName(dto.getName());
         customerUpdate.setLastName(dto.getLastName());
         customerUpdate.setEmail(dto.getEmail());
