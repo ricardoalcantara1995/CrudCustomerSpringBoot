@@ -1,6 +1,7 @@
 package com.crud.customer.GLOBAL.exceptions;
 
 import com.crud.customer.GLOBAL.dto.MessageDTO;
+import org.hibernate.internal.ExceptionConverterImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,5 +18,10 @@ public class GlobalException {
     ResponseEntity<MessageDTO>throwAttributeException(AttributeException exception){
         return ResponseEntity.badRequest()
                 .body(new MessageDTO(HttpStatus.BAD_REQUEST,exception.getMessage()));
+    }
+    @ExceptionHandler(Exception.class)
+    ResponseEntity<MessageDTO>generalException(Exception exception){
+        return ResponseEntity.internalServerError()
+                .body(new MessageDTO(HttpStatus.INTERNAL_SERVER_ERROR,exception.getMessage()));
     }
 }
