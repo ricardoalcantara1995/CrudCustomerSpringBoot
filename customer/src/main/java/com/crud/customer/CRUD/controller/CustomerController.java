@@ -32,7 +32,7 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.saveCustomer(dto));
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Customer>updateCustomer(@Valid @PathVariable("id") Long id,@RequestBody CustomerDTO dto) throws ResourceNotFoundException,AttributeException {
+    public ResponseEntity<Customer>updateCustomer(@PathVariable("id") Long id,@Valid @RequestBody CustomerDTO dto) throws ResourceNotFoundException,AttributeException {
         return ResponseEntity.ok(customerService.updateCustomer(id,dto));
     }
     @DeleteMapping("/{id}")
