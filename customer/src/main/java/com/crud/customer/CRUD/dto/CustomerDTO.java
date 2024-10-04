@@ -24,7 +24,7 @@ public class CustomerDTO {
     @Column(unique = true, name = "email")
     private String email;
     @NotBlank(message = "phone is mandatory")
-    @Size(min = 9,max = 12,message = "Minimum size is 9 characters and Maximum size is 12")
+    @Size(min = 9,max = 9,message = "The number size must be 9 characters")
     @Column(name = "phone")
     private String phone;
 }
