@@ -8,7 +8,7 @@ CREATE TABLE customer (
   name VARCHAR(100) NOT NULL,
   lastname VARCHAR(100) NOT NULL,
   email VARCHAR(100) UNIQUE,
-  phone CHAR(15) NOT NULL
+  phone CHAR(12) NOT NULL
 );
 --generando insert para la tabla 
 
