@@ -1,6 +1,7 @@
 package com.crud.customer.GLOBAL.exceptions;
 
 import com.crud.customer.GLOBAL.dto.MessageDTO;
+import com.crud.customer.GLOBAL.utils.Operation;
 import org.hibernate.internal.ExceptionConverterImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +36,6 @@ public class GlobalException {
             errorMessages.add(error.getDefaultMessage());
         });
         return ResponseEntity.badRequest()
-                .body(new MessageDTO(HttpStatus.BAD_REQUEST,errorMessages.toString()));
+                .body(new MessageDTO(HttpStatus.BAD_REQUEST, Operation.trimBrackets(errorMessages.toString())));
     }
 }
