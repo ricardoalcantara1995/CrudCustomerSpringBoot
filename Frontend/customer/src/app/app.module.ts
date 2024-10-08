@@ -21,6 +21,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //toastr
 import { ToastrModule } from 'ngx-toastr';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     ListComponent, 
     DetailComponent, 
     CreateComponent,  
-    UpdateComponent
+    UpdateComponent, MenuComponent
   
   ],
   imports: [
