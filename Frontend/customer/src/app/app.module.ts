@@ -13,6 +13,8 @@ import { ListComponent } from './customer/list.component';
 import { DetailComponent } from './customer/detail.component';
 import { CreateComponent } from './customer/create.component';
 import { UpdateComponent } from './customer/update.component';
+import { MenuComponent } from './menu/menu.component';
+
 //Paquetes de terceros
 
 //SweetAlert2
@@ -21,7 +23,6 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //toastr
 import { ToastrModule } from 'ngx-toastr';
-import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
