@@ -12,10 +12,14 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //toastr
 import { ToastrModule } from 'ngx-toastr';
+import { ListComponent } from './customer/list.component';
+import { DetailComponent } from './customer/detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
