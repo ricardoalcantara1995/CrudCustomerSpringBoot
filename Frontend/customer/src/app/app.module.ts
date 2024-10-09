@@ -31,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     ListComponent, 
     DetailComponent, 
     CreateComponent,  
-    UpdateComponent, MenuComponent
+    UpdateComponent, 
+    MenuComponent
   
   ],
   imports: [
