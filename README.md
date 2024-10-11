@@ -1,9 +1,12 @@
 # CrudCustomerSpringBoot
 
-Este es un proyecto de Spring Boot que implementa un CRUD completo para la entidad `customer`. Utiliza MySQL como base de datos.
+Este es un proyecto de Spring Boot como BackEnd y Angularcomo FrontEnd que implementa un CRUD completo para la entidad `customer`. 
+
+Utiliza MySQL como base de datos.
 
 ## Tecnologías
 - Java (Spring Boot)
+- Angular 15
 - MySQL
 - Maven
 
