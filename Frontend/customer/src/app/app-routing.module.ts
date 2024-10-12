@@ -7,8 +7,8 @@ import { CreateComponent } from './customer/create.component';
 
 const routes: Routes = [
   {path:'',component: ListComponent},
-  {path:'detail',component: DetailComponent},
-  {path:'update',component: UpdateComponent},
+  {path:'detail:id',component: DetailComponent},
+  {path:'update:id',component: UpdateComponent},
   {path:'create',component: CreateComponent},
   {path:'**',redirectTo:'', pathMatch: 'full'}
 ];
