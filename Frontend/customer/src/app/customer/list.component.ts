@@ -22,7 +22,6 @@ export class ListComponent implements OnInit{
     this.customerservice.list().subscribe(
       data => {
         this.customers = data;
-        console.log(this.customers);
       },
       err =>{
         this.toastrservice.error(err.error.message, "Error",{timeOut:3000,positionClass: "toast-top-center"})
